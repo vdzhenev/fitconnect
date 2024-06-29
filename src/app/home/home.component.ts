@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { CourseService } from '../courses/course.service';
+import { interval } from 'rxjs';
 
 
 @Component({
@@ -40,7 +41,10 @@ export class HomeComponent implements OnInit {
       this.courses = response.slice(0, this.maxCourses);
       this.totalCourses = this.courses.length;
     });
+    interval(5000).subscribe(()=>this.goRightEx());
   }
+
+  
 
   goLeftEx(): void {
     if (this.currentExerciseIndex > 0) {

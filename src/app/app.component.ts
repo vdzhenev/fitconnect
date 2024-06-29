@@ -9,6 +9,7 @@ import {MatListModule} from '@angular/material/list'
 
 import { User, UserType } from './users/user-model'
 import { UserService } from './users/user.service';
+import { IdType } from './shared/shared-types';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class AppComponent {
 
   title = 'FitConnect';
   userType = UserType[UserType.anonymous];
+  
 
   setUser(type: UserType) {
     this.userType = UserType[type];
