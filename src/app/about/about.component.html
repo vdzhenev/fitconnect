@@ -1,1 +1,16 @@
-<p>about works!</p>
+<h1>OUR TEAM OF TRUSTED INSTRUCTORS</h1>
+
+<div class="card-list">
+    <mat-card *ngFor="let instructor of topInstructors" class="instructor-card">
+        <mat-card-header>
+            <mat-card-title >{{instructor.firstName}} {{instructor.lastName}}</mat-card-title>    
+        </mat-card-header>
+        <img mat-card-image [src]="instructor.pictureUrl">
+        <mat-card-content>
+            <p>{{instructor.type}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-stroked-button>View {{instructor.firstName}}'s Courses</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

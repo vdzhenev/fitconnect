@@ -1,0 +1,24 @@
+.card-container {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+mat-card {
+    width: 70%;
+}
+
+mat-card-header {
+    align-self: center;
+    color: white;
+    font-size:32px;
+}
+
+mat-card-subtitle {
+    text-indent: 10px;
+}
+
+mat-card-content {
+    padding-top:10px;
+    color: white;
+    font-size: 18px;
+}

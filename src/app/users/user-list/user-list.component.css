@@ -1,0 +1,15 @@
+.card-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.warning-card {
+    max-width:fit-content;
+}
+
+mat-card-title {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color:coral;
+}

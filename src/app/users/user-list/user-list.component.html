@@ -1,0 +1,22 @@
+<div *ngIf="userType=='admin'">
+    <div *ngIf="users">
+        <h1>Users</h1>
+        <ul>
+            <li *ngFor="let user of users">{{ user.firstName }} {{ user.lastName }}</li>
+        </ul>
+    </div>
+</div>
+
+<div *ngIf="userType!='admin'">
+    <div class="card-container">
+        <mat-card appearance="outlined" class="warning-card">
+            <mat-card-header>
+                <mat-card-title>Warning!</mat-card-title>
+                <mat-card-subtitle>Users view is restricted to site administrators only!</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions>
+                <button mat-button routerLink="/">Back to Home</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

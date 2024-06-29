@@ -1,0 +1,18 @@
+h1 {
+    text-align: center;
+}
+
+.card-list {
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+.instructor-card {
+    max-width: 80%;
+}
+
+mat-card-title {
+    color: white;
+    padding-bottom: 10px;
+}

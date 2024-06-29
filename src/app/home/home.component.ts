@@ -1,12 +1,68 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Exercise } from '../exercise/exercise-model';
+import { ExerciseService } from '../exercise/exercise.service';
+import { Course } from '../courses/course-model';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { CourseService } from '../courses/course.service';
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet,
+    MatCardModule, MatIconModule, MatButtonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
+  exercises: Exercise[] = [];
+  totalExercises = 0;
+  currentExerciseIndex: number = 0;
+  courses: Course[] = [];
+  totalCourses = 0;
+  currentCourseIndex: number = 0;
+
+  constructor(private exerciseService: ExerciseService, private courseService: CourseService) { }
+
+  ngOnInit(): void {
+    this.exerciseService.getExercises().subscribe(response => {
+      this.exercises = response;
+      this.totalExercises = this.exercises.length;
+    });
+    this.courseService.getData().subscribe(response => {
+      this.courses = response;
+      this.totalCourses = this.courses.length;
+    });
+  }
+
+  goLeftEx(): void {
+    if (this.currentExerciseIndex > 0) {
+      this.currentExerciseIndex -= 1;
+    }
+    else {
+      this.currentExerciseIndex = this.totalExercises-1;
+    }
+  }
+
+  goRightEx(): void {
+    this.currentExerciseIndex = (this.currentExerciseIndex+1)%this.totalExercises;
+  }
+
+  goLeftCourse(): void {
+    if (this.currentCourseIndex > 0) {
+      this.currentCourseIndex -= 1;
+    }
+    else {
+      this.currentCourseIndex = this.totalCourses-1;
+    }
+  }
+
+  goRightCourse(): void {
+    this.currentCourseIndex = (this.currentCourseIndex+1)%this.totalCourses;
+  }
 }

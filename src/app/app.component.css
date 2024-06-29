@@ -1,0 +1,16 @@
+h1 {
+    padding-left: 10px;
+    color: darkmagenta;
+}
+
+.right-align {
+    flex: 1 1 auto;
+}
+
+.logged-user {
+    font-size: 18px;
+}
+
+.current-view {
+    padding-top: 10px
+}

@@ -1,11 +1,44 @@
 <h1>{{title}}</h1>
-<mat-toolbar color="primary">
+<mat-toolbar color="accent">
   <mat-toolbar-row>
     <div>
       <a mat-button routerLink="/">Home</a>
-      <a mat-button routerLink="/courses">Courses</a>
+      <a mat-button routerLink="/exercises"> Browse Exercises</a>
+      <a mat-button routerLink="/courses"> Browse Courses</a>
+      <span *ngIf="userType=='admin'">
+        <a mat-button routerLink="/users">Users</a>
+      </span>
       <a mat-button routerLink="/about">About</a>
+    </div>
+    <span class="right-align"></span>
+    <div *ngIf="userType=='anonymous'">
+      <button mat-button [matMenuTriggerFor]="login">
+        <mat-icon>login</mat-icon>
+        Login
+      </button>
+      <mat-menu #login="matMenu">
+        <button mat-menu-item (click)="setUser(1)">Anonymous</button>
+        <button mat-menu-item (click)="setUser(2)">Regular</button>
+        <button mat-menu-item (click)="setUser(3)">Instructor</button>
+        <button mat-menu-item (click)="setUser(0)">Admin</button>
+      </mat-menu>
+    </div>
+    <div *ngIf="userType!='anonymous'">
+      <button mat-button [matMenuTriggerFor]="user">
+        <mat-icon>person</mat-icon>
+        {{userType}}
+      </button>
+      <mat-menu #user="matMenu">
+        <button mat-menu-item>My Profile</button>
+        <button mat-menu-item>My Courses</button>
+        <button mat-menu-item>Following</button>
+        <button mat-menu-item (click)="setUser(1)">Log out</button>
+      </mat-menu>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
-<router-outlet></router-outlet>
+
+
+<div class="current-view">
+  <router-outlet></router-outlet>
+</div>
