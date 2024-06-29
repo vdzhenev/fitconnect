@@ -22,8 +22,10 @@ export class HomeComponent implements OnInit {
 
   exercises: Exercise[] = [];
   totalExercises = 0;
+  maxExercises = 5;
   currentExerciseIndex: number = 0;
   courses: Course[] = [];
+  maxCourses = 5;
   totalCourses = 0;
   currentCourseIndex: number = 0;
 
@@ -31,11 +33,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.exerciseService.getExercises().subscribe(response => {
-      this.exercises = response;
+      this.exercises = response.slice(0, this.maxExercises);
       this.totalExercises = this.exercises.length;
     });
     this.courseService.getData().subscribe(response => {
-      this.courses = response;
+      this.courses = response.slice(0, this.maxCourses);
       this.totalCourses = this.courses.length;
     });
   }

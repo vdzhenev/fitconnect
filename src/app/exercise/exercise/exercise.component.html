@@ -13,12 +13,21 @@
                 </mat-card-subtitle>
                 <img mat-card-image [src]="exercise.imageUrl">
                 <mat-card-content>
-                    {{exercise.content}}
+                    <p style="white-space: pre-line">{{exercise.content}}</p>
                 </mat-card-content>
+                <mat-card-footer>
+                    <mat-chip-set>
+                        <mat-chip *ngFor="let tag of exercise.tags">{{tag}}</mat-chip>
+                    </mat-chip-set>
+                </mat-card-footer>
                 <mat-card-actions>
                     <button mat-flat-button>
                         <mat-icon>favorite</mat-icon>
                         Add to Favorites
+                    </button>
+                    <button mat-flat-button>
+                        <mat-icon>chat</mat-icon>
+                        Comment
                     </button>
                 </mat-card-actions>
             </mat-card>

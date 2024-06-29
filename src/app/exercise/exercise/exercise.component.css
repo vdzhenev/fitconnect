@@ -1,10 +1,16 @@
 .card-container {
     padding-left: 10px;
     padding-right: 10px;
+    display: flex;
+    max-width: 50%;
+}
+
+a {
+    color: orchid;
 }
 
 mat-card {
-    width: 70%;
+    max-width: fit-content;
 }
 
 mat-card-header {
@@ -21,4 +27,10 @@ mat-card-content {
     padding-top:10px;
     color: white;
     font-size: 18px;
+}
+
+mat-card-footer {
+    padding-top:15px;
+    padding-left: 10px;
+    padding-right: 10px;
 }

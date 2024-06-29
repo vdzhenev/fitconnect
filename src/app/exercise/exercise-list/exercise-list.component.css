@@ -1,0 +1,25 @@
+.cards-container {
+    width: 100%;
+    display: flex;
+    padding-left: 10px;
+    flex-wrap: wrap;
+}
+
+mat-card-subtitle {
+    padding-top:10px;
+    color: white;
+    text-align: center;
+}
+
+mat-card img{
+    width: 300px;
+    height: 200px;
+}
+
+mat-card:hover {
+    background-color: darkmagenta;
+}
+
+mat-card {
+    margin: 10px;
+}

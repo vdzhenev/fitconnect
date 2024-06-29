@@ -33,14 +33,14 @@
                 </button>
             </div>
             <mat-card class="exercise-card" appearance="outlined">
-                <mat-card-content [routerLink]="'/coursees/' + currentCourseIndex">
+                <mat-card-content [routerLink]="'/courses/' + courses[currentCourseIndex].id">
                     <img mat-card-image [src]="courses[currentCourseIndex].imageUrl">
                     <mat-card-subtitle class="card-subtitle">
                         {{courses[currentCourseIndex].content}}
                     </mat-card-subtitle>
                 </mat-card-content>
                 <mat-card-actions class="card-actions">
-                    <button mat-flat-button routerLink="/exercises">Join Courses</button>
+                    <button mat-flat-button routerLink="/courses">Join Courses</button>
                 </mat-card-actions>
             </mat-card>
             <div class="button-container">

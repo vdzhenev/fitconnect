@@ -10,13 +10,14 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import {MatChipsModule } from '@angular/material/chips'
 
 
 @Component({
   selector: 'app-exercise',
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet,
-    MatCardModule, MatIconModule, MatButtonModule],
+    MatCardModule, MatIconModule, MatButtonModule, MatChipsModule ],
   templateUrl: './exercise.component.html',
   styleUrl: './exercise.component.css'
 })
@@ -37,7 +38,7 @@ export class ExerciseComponent implements OnInit {
 
   getExercise(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.exerciseService.getExercise(id)
+    this.exerciseService.getExerciseById(id)
       .subscribe(exercise => {
         this.exercise = exercise;
         this.getAuthorNames(exercise.authorId);

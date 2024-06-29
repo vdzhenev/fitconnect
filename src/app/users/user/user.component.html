@@ -1,1 +1,19 @@
-<p>user works!</p>
+<div *ngIf="user">
+    <h2>{{user.firstName}} {{user.lastName}}</h2>
+    <div *ngIf="user.type==getTypeFromString('instructor') && user.courses.length">
+        <h3>{{user.firstName}}'s courses:</h3>
+        <a *ngFor="let courseId of user.courses" [routerLink]="'/courses/'+courseId"><{{courseId}}></a>
+    </div>
+    <div *ngIf="user.type==getTypeFromString('instructor') && user.exercises.length">
+        <h3>Exercises by {{user.firstName}}:</h3>
+        <a *ngFor="let exId of user.exercises" [routerLink]="'/exercises/'+exId"><{{exId}}></a>
+    </div>
+    <div *ngIf="user.type==getTypeFromString('regular') && user.courses.length">
+        <h3>My courses:</h3>
+        <a *ngFor="let courseId of user.courses" [routerLink]="'/courses/'+courseId"><{{courseId}}></a>
+    </div>
+    <div *ngIf="user.type==getTypeFromString('regular') && user.exercises.length">
+        <h3>Favorite exercises:</h3>
+        <a *ngFor="let exId of user.exercises" [routerLink]="'/exercises/'+exId"><{{exId}}></a>
+    </div>
+</div>

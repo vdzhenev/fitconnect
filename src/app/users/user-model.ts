@@ -15,6 +15,7 @@ export class UserCreateDto {
         public type: UserType,
         public following: IdType[],
         public courses: IdType[],
+        public exercises: IdType[],
         public pictureUrl?: string,
         public id?: IdType
     ) {}
