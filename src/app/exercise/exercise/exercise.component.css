@@ -34,3 +34,7 @@ mat-card-footer {
     padding-left: 10px;
     padding-right: 10px;
 }
+
+mat-card-actions {
+    color: white;
+}

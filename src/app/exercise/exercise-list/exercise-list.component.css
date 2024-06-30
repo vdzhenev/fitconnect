@@ -1,8 +1,30 @@
 .cards-container {
-    width: 100%;
+    width: 80%;
     display: flex;
     padding-left: 10px;
     flex-wrap: wrap;
+}
+
+.tags-container {
+    max-width: 10%;
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+h2 {
+    text-align: center;
+}
+
+mat-chip {
+    max-width: max-content;
+    margin: 5px
+}
+
+.column {
+    display: flex;
+    justify-content: center;
 }
 
 mat-card-subtitle {
@@ -21,5 +43,6 @@ mat-card:hover {
 }
 
 mat-card {
+    height: max-content;
     margin: 10px;
 }

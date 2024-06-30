@@ -35,4 +35,8 @@ export class UserComponent implements OnInit{
   getTypeFromString(type: keyof typeof UserType): UserType {
     return UserType[type];
   }
+
+  getTypeFromNumber(type: UserType): String {
+    return UserType[type];
+  }
 }

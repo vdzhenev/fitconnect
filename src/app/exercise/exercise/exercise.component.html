@@ -17,10 +17,10 @@
                 </mat-card-content>
                 <mat-card-footer>
                     <mat-chip-set>
-                        <mat-chip *ngFor="let tag of exercise.tags">{{tag}}</mat-chip>
+                        <mat-chip *ngFor="let tag of exercise.tags" [routerLink]="'/exercises/'" [queryParams]="{tags : tag}">{{tag}}</mat-chip>
                     </mat-chip-set>
                 </mat-card-footer>
-                <mat-card-actions>
+                <mat-card-actions *ngIf="loggedUser?.type!=1">
                     <button mat-flat-button>
                         <mat-icon>favorite</mat-icon>
                         Add to Favorites
@@ -29,6 +29,9 @@
                         <mat-icon>chat</mat-icon>
                         Comment
                     </button>
+                </mat-card-actions>
+                <mat-card-actions *ngIf="loggedUser?.type==1">
+                    <p>To add exercise to favorites or leave a comment, please Log in</p>
                 </mat-card-actions>
             </mat-card>
         </div>

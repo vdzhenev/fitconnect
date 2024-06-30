@@ -5,34 +5,34 @@
       <a mat-button routerLink="/">Home</a>
       <a mat-button routerLink="/exercises"> Browse Exercises</a>
       <a mat-button routerLink="/courses"> Browse Courses</a>
-      <span *ngIf="userType=='admin'">
+      <span *ngIf="userType==0">
         <a mat-button routerLink="/users">Users</a>
       </span>
       <a mat-button routerLink="/about">About</a>
     </div>
     <span class="right-align"></span>
-    <div *ngIf="userType=='anonymous'">
+    <div *ngIf="userType==1">
       <button mat-button [matMenuTriggerFor]="login">
         <mat-icon>login</mat-icon>
         Login
       </button>
       <mat-menu #login="matMenu">
-        <button mat-menu-item (click)="setUser(1)">Anonymous</button>
-        <button mat-menu-item (click)="setUser(2)">Regular</button>
-        <button mat-menu-item (click)="setUser(3)">Instructor</button>
-        <button mat-menu-item (click)="setUser(0)">Admin</button>
+        <button mat-menu-item (click)="logInUser(4)">vesko (admin)</button>
+        <button mat-menu-item (click)="logInUser(1)">pesho (regular)</button>
+        <button mat-menu-item (click)="logInUser(2)">gosho (instructor)</button>
+        <button mat-menu-item (click)="logInUser(3)">ivancho (instructor)</button>
       </mat-menu>
     </div>
-    <div *ngIf="userType!='anonymous'">
+    <div *ngIf="userType!=1">
       <button mat-button [matMenuTriggerFor]="user">
         <mat-icon>person</mat-icon>
-        {{userType}}
+        {{loggedUserNames}}
       </button>
       <mat-menu #user="matMenu">
-        <button mat-menu-item>My Profile</button>
+        <button mat-menu-item routerLink="/account">My Profile</button>
         <button mat-menu-item>My Courses</button>
         <button mat-menu-item>Following</button>
-        <button mat-menu-item (click)="setUser(1)">Log out</button>
+        <button mat-menu-item (click)="logOutUser()" routerLink="/">Log out</button>
       </mat-menu>
     </div>
   </mat-toolbar-row>

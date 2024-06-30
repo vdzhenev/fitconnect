@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
       this.exercises = response.slice(0, this.maxExercises);
       this.totalExercises = this.exercises.length;
     });
-    this.courseService.getData().subscribe(response => {
+    this.courseService.getCourses().subscribe(response => {
       this.courses = response.slice(0, this.maxCourses);
       this.totalCourses = this.courses.length;
     });

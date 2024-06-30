@@ -1,0 +1,27 @@
+<div *ngIf="loggedUser">
+    <div *ngIf="getUserTypeAsString()!='anonymous'">
+        <div class="account-info-container">
+            <h2>Welcome, {{loggedUser.firstName}} {{loggedUser.lastName}}!</h2>
+            <h3>Account Info</h3>
+            <div *ngIf="loggedUser.pictureUrl" class="image-container">
+                <img [src]="loggedUser.pictureUrl">
+                <button mat-raised-button>
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </div>
+            <button *ngIf="!loggedUser.pictureUrl" mat-raised-button>
+                <mat-icon>add_a_photo</mat-icon>
+            </button>
+            <p>Username: {{loggedUser.username}}</p>
+            <p>User Type: {{getUserTypeAsString()}}</p>
+            <h3>My courses:</h3>
+            <li *ngFor="let course of loggedUser.courses">
+                <a [routerLink]="'/courses/'+{course}">{{course}}</a>
+            </li>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="getUserTypeAsString()=='anonymous'">
+    <h2>To view account information, please log in</h2>
+</div>

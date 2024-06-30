@@ -18,10 +18,10 @@ export class UserCreateDto {
         public exercises: IdType[],
         public pictureUrl?: string,
         public id?: IdType
-    ) {}
+    ) { }
 }
 
-export class User extends UserCreateDto{
+export class User extends UserCreateDto {
     static className = 'User';
     override id: IdType = 0;
 }

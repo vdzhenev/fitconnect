@@ -20,4 +20,12 @@ export class ExerciseService {
     return this.http.get<Exercise>(`${this.apiUrl}/${id}`);
   }
 
+  getExercisesByTag(tag: string[]): Observable<Exercise[]> {
+    return this.http.get<Exercise[]>(`${this.apiUrl}/tags/${tag.join('&')}`);
+  }
+
+  postExercise(ex: Exercise) : Observable<Exercise> {
+    return this.http.post<Exercise>(`${this.apiUrl}`, ex);
+  }
+
 }

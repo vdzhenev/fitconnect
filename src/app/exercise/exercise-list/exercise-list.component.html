@@ -1,13 +1,25 @@
-<div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="30px">
+<h2 *ngIf="selectedTag">Showing exercises with tag: {{selectedTag}}</h2>
+<div class="column">
+    <div class="tags-container">
+        <span><mat-chip [routerLink]="'/exercises/'">All</mat-chip></span>
+        <span *ngFor="let tag of tags | async">
+            <mat-chip [routerLink]="'/exercises/'" [queryParams]="{tags : tag}" [queryParamsHandling]="'merge'">
+                {{tag}}
+            </mat-chip>
+        </span>
+    </div>
     <div class="cards-container">
-        <mat-card *ngFor="let ex of exercises">
-            <mat-card-content [routerLink]="'/exercises/' + ex.id">
+        <mat-card *ngFor="let ex of exercises | async" [routerLink]="'/exercises/' + ex.id">
+            <mat-card-content>
                 <img mat-card-image [src]="ex.imageUrl">
             </mat-card-content>
             <mat-card-subtitle>{{ex.title}}</mat-card-subtitle>
-            <mat-card-actions>
+            <mat-card-actions *ngIf="loggedUser?.type!=1">
                 <button mat-flat-button>
                     <mat-icon>favorite</mat-icon>
+                </button>
+                <button mat-flat-button>
+                    <mat-icon>chat</mat-icon>
                 </button>
             </mat-card-actions>
         </mat-card>

@@ -7,9 +7,9 @@ import cors from 'cors';
 dotenv.config()
 
 const USERS = [
-    { id: 1, username: "pesho", firstName: "Petar", lastName: "Petrov", type: 2, following: [2], courses: [1], exercises: [1,2,3], pictureUrl: ''},
+    { id: 1, username: "pesho", firstName: "Petar", lastName: "Petrov", type: 2, following: [2], courses: [1], exercises: [1,2,3], pictureUrl: 'https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg'},
     { id: 2, username: "gosho", firstName: "Georgi", lastName: "Georgiev", type: 3, following: [], courses: [1], exercises: [1, 2, 5, 6, 7], pictureUrl: 'https://hips.hearstapps.com/hmg-prod/images/mh-trainer-2-1533577086.png'},
-    { id: 3, username: "ivancho", firstName: "Ivan", lastName: "Ivanov", type: 3, following: [], courses: [2], exercises: [3, 4], pictureUrl: ''},
+    { id: 3, username: "ivancho", firstName: "Ivan", lastName: "Ivanov", type: 3, following: [], courses: [2], exercises: [3, 4], pictureUrl: 'https://origym.ie/files/img_cache/7218/1920_1678980861_TheProfessionalDevelopmentOpportunitiesofaPersonalTrainervsGroupFitnessInstructor.jpeg?1678980882'},
     { id: 4, username: "vesko", firstName: "Vasil", lastName: "Vasilev", type: 0, following: [], courses: [], exercises: [], pictureUrl: ''}
 ];
 
@@ -163,9 +163,25 @@ app.get("/api/users/:userId", (req: Request, res: Response, next: express.NextFu
     }
 });
 
+app.put("/api/users/:userId", (req: Request, res: Response, next: express.NextFunction) => {
+    const ind = USERS.findIndex(u => u.id === +req.params.userId);
+    if (ind>-1) {
+        USERS[ind] = req.body;
+        res.json(USERS[ind]);
+    } else {
+        next(new HttpError(404, `User with ID='${req.params.userId}' not found`));
+    }
+});
+
 app.get("/api/exercises", (req: Request, res: Response) => {
     res.json(EXERCISES)
 })
+
+app.post("/api/exercises", (req: Request, res: Response) => {
+    const ind = EXERCISES.push(req.body);
+    console.log('added neco arc');
+    res.json(EXERCISES[ind-1]);
+});
 
 app.get("/api/exercises/:exId", (req: Request, res: Response, next: express.NextFunction) => {
     const exercise = EXERCISES.find(ex => ex.id === +req.params.exId);
@@ -177,7 +193,11 @@ app.get("/api/exercises/:exId", (req: Request, res: Response, next: express.Next
 });
 
 app.get("/api/exercises/tags/:tag", (req: Request, res: Response, next: express.NextFunction) => {
-    const exercises = EXERCISES.filter(ex => ex.tags.includes(req.params.tag));
+    const exercises = EXERCISES.filter(ex => { 
+        let tags = req.params.tag.split('&');
+        let success = tags.every((tag)=> ex.tags.includes(tag) );
+        return success;
+    });
     if (exercises) {
         res.json(exercises)
     } else {

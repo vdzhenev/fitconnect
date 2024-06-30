@@ -20,8 +20,8 @@ mat-card img {
     height: 350px;
 }
 
-mat-card img:hover {
-    filter: brightness(50%);
+mat-card:hover {
+    background-color: darkmagenta;
 }
 
 .card-subtitle {

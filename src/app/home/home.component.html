@@ -7,8 +7,8 @@
                     <mat-icon>chevron_left</mat-icon>
                 </button>
             </div>
-            <mat-card class="exercise-card" appearance="outlined">
-                <mat-card-content [routerLink]="'/exercises/' + exercises[currentExerciseIndex].id">
+            <mat-card class="exercise-card" appearance="outlined" [routerLink]="'/exercises/' + exercises[currentExerciseIndex].id">
+                <mat-card-content>
                     <img mat-card-image [src]="exercises[currentExerciseIndex].imageUrl">
                 </mat-card-content>
                 <mat-card-actions class="card-actions">

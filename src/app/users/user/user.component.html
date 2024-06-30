@@ -1,19 +1,21 @@
-<div *ngIf="user">
-    <h2>{{user.firstName}} {{user.lastName}}</h2>
+<div *ngIf="user" class="user-container">
+    <h2>{{user.firstName}} {{user.lastName}} ({{getTypeFromNumber(user.type)}})</h2>
+    <img [src]="user.pictureUrl">
     <div *ngIf="user.type==getTypeFromString('instructor') && user.courses.length">
         <h3>{{user.firstName}}'s courses:</h3>
-        <a *ngFor="let courseId of user.courses" [routerLink]="'/courses/'+courseId"><{{courseId}}></a>
+        <li *ngFor="let courseId of user.courses">
+            <a [routerLink]="'/courses/'+courseId">
+                <{{courseId}}>
+            </a>
+        </li>
     </div>
     <div *ngIf="user.type==getTypeFromString('instructor') && user.exercises.length">
         <h3>Exercises by {{user.firstName}}:</h3>
-        <a *ngFor="let exId of user.exercises" [routerLink]="'/exercises/'+exId"><{{exId}}></a>
-    </div>
-    <div *ngIf="user.type==getTypeFromString('regular') && user.courses.length">
-        <h3>My courses:</h3>
-        <a *ngFor="let courseId of user.courses" [routerLink]="'/courses/'+courseId"><{{courseId}}></a>
-    </div>
-    <div *ngIf="user.type==getTypeFromString('regular') && user.exercises.length">
-        <h3>Favorite exercises:</h3>
-        <a *ngFor="let exId of user.exercises" [routerLink]="'/exercises/'+exId"><{{exId}}></a>
+        <li *ngFor="let exId of user.exercises">
+            <a [routerLink]="'/exercises/'+exId">
+                <{{exId}}>
+            </a>
+        </li>
+
     </div>
 </div>

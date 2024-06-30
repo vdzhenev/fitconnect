@@ -11,6 +11,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import {MatChipsModule } from '@angular/material/chips'
+import { LoggedUserService } from '../../users/logged-user/logged-user.service';
 
 
 @Component({
@@ -24,6 +25,7 @@ import {MatChipsModule } from '@angular/material/chips'
 export class ExerciseComponent implements OnInit {
   constructor(
     private exerciseService: ExerciseService,
+    private loggedUserService: LoggedUserService,
     private userService: UserService,
     private route: ActivatedRoute,
     private location: Location) { }
@@ -34,6 +36,7 @@ export class ExerciseComponent implements OnInit {
 
   ngOnInit(): void {
     this.getExercise();
+    this.loggedUserService.loggedUser.subscribe(u => this.loggedUser = u);
   }
 
   getExercise(): void {
@@ -45,9 +48,6 @@ export class ExerciseComponent implements OnInit {
       });
   }
 
-  getUser(): void {
-
-  }
   getAuthorNames(id: IdType | undefined): void {
     if (id) {
       this.userService.getUser(id)
