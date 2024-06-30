@@ -12,8 +12,16 @@ export class ExerciseService {
   private apiUrl = 'http://localhost:3000/api/exercises';
   constructor(private http: HttpClient) { }
 
+  getUrl(): string {
+    return this.apiUrl;
+  }
+
   getExercises(): Observable<Exercise[]> {
     return this.http.get<Exercise[]>(this.apiUrl);
+  }
+
+  getDefaultExercise(): Observable<Exercise> {
+    return this.http.get<Exercise>(`${this.apiUrl}/create`);
   }
 
   getExerciseById(id: IdType): Observable<Exercise> {
@@ -24,8 +32,13 @@ export class ExerciseService {
     return this.http.get<Exercise[]>(`${this.apiUrl}/tags/${tag.join('&')}`);
   }
 
-  postExercise(ex: Exercise) : Observable<Exercise> {
-    return this.http.post<Exercise>(`${this.apiUrl}`, ex);
+
+  create(ex: Exercise) : Observable<Exercise> {
+    return this.http.post<Exercise>(`${this.apiUrl}/${ex.id}`, ex);
+  }
+
+  update(ex: Exercise): Observable<Exercise> {
+    return this.http.put<Exercise>(`${this.apiUrl}/${ex.id}`, ex);
   }
 
 }

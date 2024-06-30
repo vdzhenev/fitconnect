@@ -19,7 +19,7 @@ import { LoggedUserService } from './users/logged-user/logged-user.service';
   standalone: true,
   imports: [
     RouterLink, RouterLinkActive, RouterOutlet, CommonModule,
-    MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatListModule,
+    MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatListModule
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

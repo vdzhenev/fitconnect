@@ -1,16 +1,25 @@
 .cards-container {
-    width: 80%;
+    width: 60%;
     display: flex;
     padding-left: 10px;
     flex-wrap: wrap;
 }
 
+.header-container {
+    width:70%;
+}
+
 .tags-container {
-    max-width: 10%;
-    align-items: left;
+    align-self:right;
+    width: 10%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+}
+
+.add-exercise {
+    width: 30%;
+    align-self: left;
 }
 
 h2 {

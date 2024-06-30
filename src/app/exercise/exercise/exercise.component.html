@@ -1,5 +1,4 @@
 <div *ngIf="exercise">
-
     <div fxLayout="row" fxLayoutAlign="space-evenly center">
         <div class="card-container">
             <mat-card appearance="outlined">
@@ -7,8 +6,8 @@
                     {{exercise.title | uppercase}}
                 </mat-card-header>
                 <mat-card-subtitle>
-                    Published by: 
-                    <a [routerLink]="'/users/'+exercise.authorId">{{authhorNames}}</a>, 
+                    Published by:
+                    <a [routerLink]="'/users/'+exercise.authorId">{{authhorNames}}</a>,
                     {{exercise.publishDate | date:'dd/MM/yyyy'}}
                 </mat-card-subtitle>
                 <img mat-card-image [src]="exercise.imageUrl">
@@ -17,7 +16,8 @@
                 </mat-card-content>
                 <mat-card-footer>
                     <mat-chip-set>
-                        <mat-chip *ngFor="let tag of exercise.tags" [routerLink]="'/exercises/'" [queryParams]="{tags : tag}">{{tag}}</mat-chip>
+                        <mat-chip *ngFor="let tag of exercise.tags" [routerLink]="'/exercises/'"
+                            [queryParams]="{tags : tag}">{{tag}}</mat-chip>
                     </mat-chip-set>
                 </mat-card-footer>
                 <mat-card-actions *ngIf="loggedUser?.type!=1">
@@ -35,9 +35,5 @@
                 </mat-card-actions>
             </mat-card>
         </div>
-        <div>
-            
-        </div>
     </div>
-
 </div>

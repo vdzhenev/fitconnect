@@ -1,4 +1,6 @@
-<h2 *ngIf="selectedTag">Showing exercises with tag: {{selectedTag}}</h2>
+<div class="header-container">
+    <h2 *ngIf="selectedTag">Showing exercises with tag: {{selectedTag}}</h2>
+</div>
 <div class="column">
     <div class="tags-container">
         <span><mat-chip [routerLink]="'/exercises/'">All</mat-chip></span>
@@ -24,4 +26,14 @@
             </mat-card-actions>
         </mat-card>
     </div>
+    <!--
+    <div class="add-exercise">
+        <div *ngIf="loggedUser?.type==3">
+            <button *ngIf="loggedUser" mat-flat-button [routerLink]="'/exercises/create'">
+                <mat-icon>post_add</mat-icon>
+                Add Exercise
+            </button>
+        </div>
+    </div>
+    -->
 </div>

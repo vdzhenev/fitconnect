@@ -8,10 +8,12 @@ import { ExerciseComponent } from './exercise/exercise/exercise.component';
 import { UserComponent } from './users/user/user.component';
 import { CourseComponent } from './courses/course/course.component';
 import { LoggedUserComponent } from './users/logged-user/logged-user.component';
+import { CreateExerciseComponent } from './exercise/create-exercise/create-exercise.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'exercises', component: ExerciseListComponent },
+  { path: 'exercises/create', component: CreateExerciseComponent },
   { path: 'exercises/:id', component: ExerciseComponent },
   { path: 'courses', component: CourseListComponent },
   { path: 'courses/:id', component: CourseComponent },

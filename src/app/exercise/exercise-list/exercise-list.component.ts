@@ -14,7 +14,7 @@ import { LoggedUserService } from '../../users/logged-user/logged-user.service';
 @Component({
   selector: 'app-exercise-list',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet,
+  imports: [ CommonModule, RouterLink, RouterLinkActive, RouterOutlet,
     MatCardModule, MatButtonModule, MatIconModule, MatChipsModule],
   templateUrl: './exercise-list.component.html',
   styleUrl: './exercise-list.component.css'
@@ -25,6 +25,7 @@ export class ExerciseListComponent implements OnInit {
   constructor(private exerciseService: ExerciseService, private loggedUserService: LoggedUserService, private route: ActivatedRoute) { }
 
   exercises: BehaviorSubject<Exercise[]> = new BehaviorSubject<Exercise[]>([]);
+  newExercise: Exercise = new Exercise('Title', 'Content', -1, Date.now(), '', []);
   tags: BehaviorSubject<string[]>=new BehaviorSubject<string[]>([]);
   selectedTag = '';
 
@@ -44,8 +45,8 @@ export class ExerciseListComponent implements OnInit {
 
   getExercises(): void {
     this.exerciseService.getExercises()
-      .subscribe(exercises => {
-        this.exercises.next(exercises.sort((a, b)=>{ return a.title>b.title?1:-1}));
+      .subscribe(ex => {
+        this.exercises.next(ex.sort((a, b)=>{ return a.title>b.title?1:-1}));
         this.getTags();
         this.selectedTag='All';
       });
@@ -66,5 +67,4 @@ export class ExerciseListComponent implements OnInit {
     arr = [...new Set(arr)];
     this.tags.next(arr.sort());
   }
-
 }
